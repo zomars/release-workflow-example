@@ -30,7 +30,9 @@ jobs:
           git config --local user.name "GitHub Actions"
 
       - name: Bump version
-        run: npm version --no-git-tag-version --no-commit-hooks ${{ inputs.next_version }}
+        run: |
+          cd apps/web
+          yarn version ${{ inputs.next_version }}
 
       - name: Commit changes
         run: |

@@ -30,10 +30,7 @@ jobs:
           git config --local user.email "github-actions@github.com"
           git config --local user.name "GitHub Actions"
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: 'yarn'
+      - uses: threeal/setup-yarn-action@v2.0.0
 
       - name: Bump version
         run: |

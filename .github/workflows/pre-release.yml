@@ -21,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: 'develop'
+          ref: 'main'
           ssh-key: ${{ secrets.DEPLOY_KEY }}
 
       - name: Configure git
@@ -38,13 +38,6 @@ jobs:
         run: |
           git add .
           git commit -m "chore: release ${{ inputs.next_version }}"
-          git push
-
-      - name: Merge develop into main
-        run: |
-          git checkout main
-          git pull
-          git merge origin/develop
           git push
 
       - name: Draft release

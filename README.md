@@ -14,7 +14,7 @@ It has 2 permanent branches:
 
 ### Release workflow
 
-After some PRs have been merged into `develop`, a [GitHub Action](.github/workflows/release.yml) is responsible to:
+After some PRs have been merged into `develop`, a [GitHub Action](.github/workflows/pre-release.yml) is responsible to:
 - Bump the version in `package.json`
 - Commit the change on `develop`
 - Merge `develop` into `main`
@@ -27,7 +27,7 @@ To bypass rulesets protection from a GitHub action:
 - Create a [deploy key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/managing-deploy-keys#deploy-keys) with write permissions
 - Save the private SSH key in a `DEPLOY_KEY` [secret](https://docs.github.com/en/actions/security-for-github-actions/security-guides/using-secrets-in-github-actions)
 - Add `Deploy keys` to the Bypass list of the rulesets (Bypass list > Add bypass > Deploy keys)
-- Make your action checkouts the repo [using the SSH key from the secret](.github/workflows/release.yml#L25)
+- Make your action checkouts the repo [using the SSH key from the secret](.github/workflows/pre-release.yml#L25)
 
 ### Rotate the deploy key
 #### Manually

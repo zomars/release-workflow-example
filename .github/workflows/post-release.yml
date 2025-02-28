@@ -22,4 +22,9 @@ jobs:
           git config --local user.email "github-actions@github.com"
           git config --local user.name "GitHub Actions"
 
-      - run: git push origin +main:production
+      # There's a race conditon where a PR could be merged after the tag is created
+      # We checkout the latest tag instead of main to prevent accidentally shipping those
+      - run: |
+          LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+          git checkout $LATEST_TAG
+          git push origin +HEAD:production
